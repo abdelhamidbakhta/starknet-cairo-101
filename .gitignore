@@ -134,3 +134,6 @@ dmypy.json
 goerli.deployments.txt
 Makefile
 
+# Nile
+*accounts.json
+node.json
