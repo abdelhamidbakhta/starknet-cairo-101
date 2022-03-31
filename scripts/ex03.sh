@@ -28,12 +28,21 @@ function decrement_counter() {
     --function decrement_counter 
 }
 
+function claim_points() {
+    starknet invoke \
+    --address $EX03_ADDR \
+    --abi $ABI_DIR/ex03.json \
+    --network $NETWORK --account $ACCOUNT_ALIAS \
+    --function claim_points
+}
+
 while true; do
-    select yn in "Get" "Increment" "Decrement" "Quit"; do
+    select yn in "Get" "Increment" "Decrement" "Claim" "Quit"; do
         case $yn in
             Get ) get_counter; break;;
             Increment ) increment_counter; break;;
             Decrement ) decrement_counter; break;;
+            Claim ) claim_points; break;;
             Quit ) exit;;
         esac
     done
