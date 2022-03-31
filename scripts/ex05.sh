@@ -1,6 +1,12 @@
 # Load configuration
 source $STARKNET_CAIRO_101_ROOT_DIR/scripts/.env
 
+# Summary
+# invoke assign_user_slot
+# invoke copy_secret_value_to_readable_mapping 
+# call user_values to read the copied value
+# invoke claim_points with the value
+
 function user_slot() {
     echo "Reading my user slot"
     cmd="starknet call --address $EX05_ADDR --abi $ABI_DIR/ex05.json"
@@ -54,16 +60,17 @@ function process_claim_points() {
     read
     val=${REPLY}
     echo "Claiming points with value: $val"
-    claim_points val
+    claim_points $val
 }
 
 
 while true; do
-    select yn in "Slot" "Value" "Read" "Assign" "Copy" "Claim" "Quit"; do
+    select yn in "Slot" "Read" "Assign" "Copy" "Claim" "Quit"; do
         case $yn in
             Slot ) user_slot; break;;
             Read ) read_value; break;;
             Assign ) assign_user_slot; break;;
+            Copy ) copy_secret_value_to_readable_mapping; break;;
             Claim ) process_claim_points; break;;
             Quit ) exit;;
         esac

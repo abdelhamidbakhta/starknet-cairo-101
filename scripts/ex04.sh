@@ -2,9 +2,9 @@
 source $STARKNET_CAIRO_101_ROOT_DIR/scripts/.env
 
 # Summary
-# invoke assign_slot
+# invoke assign_user_slot
 # call user_slot to read the assigned slot
-# call values_mappes to read the value mapped by the read slot
+# call values_mapped to read the value mapped by the read slot
 # invoke claim_points with the value equal to read value - 32
 
 function user_slot() {
